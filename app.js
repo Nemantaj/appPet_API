@@ -10,7 +10,7 @@ const dataRoutes = require("./routes/data");
 
 const PORT = process.env.PORT || 3001;
 const corsOptions = {
-  origin: true,
+  origin: "*",
   credentials: true,
   optionSuccessStatus: 200,
 };
