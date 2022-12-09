@@ -37,9 +37,9 @@ app.use((error, req, res, next) => {
   });
 });
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "./build/index.html"));
-//   });
+ app.get("/", (req, res) => {
+     res.json({success: true})
+   });
 
 mongoose
   .connect(MONGODB_URI, {
