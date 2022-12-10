@@ -123,8 +123,8 @@ exports.createOrder = async (req, res, next) => {
         customer_phone: user.mobile.toString(),
       },
       order_meta: {
-        return_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/order?order_id={order_id}",
-        notify_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/order",
+        return_url: process.env.RED + "/order?order_id={order_id}",
+        notify_url: process.env.RED + "/order",
       },
       petInfo: req.body.petId,
       plan: {
@@ -287,12 +287,12 @@ exports.renewPlan = async (req, res, next) => {
     ]);
 
     console.log(plan);
-    if (plan.plan.planType !== "Subscription Plan") {
-      const error = new Error("This plan cannot be renewed!");
-      error.title = "Error Occured";
-      error.statusCode = 422;
-      throw error;
-    }
+    // if (plan.plan.planType !== "Subscription Plan") {
+    //   const error = new Error("This plan cannot be renewed!");
+    //   error.title = "Error Occured";
+    //   error.statusCode = 422;
+    //   throw error;
+    // }
 
     const order_id = (Math.floor(Math.random() * 90000) + 10000).toString();
     const newOrder = {
@@ -306,9 +306,9 @@ exports.renewPlan = async (req, res, next) => {
         customer_email: plan.userId.email,
         customer_phone: plan.userId.mobile.toString(),
       },
-     order_meta: {
-        return_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/renew?order_id={order_id}",
-        notify_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/renew",
+      order_meta: {
+        return_url: process.env.RED + "/renew?order_id={order_id}",
+        notify_url: process.env.RED + "/renew",
       },
       petInfo: planId,
       plan: {
@@ -411,6 +411,7 @@ exports.confirmRenewal = async (req, res, next) => {
             "plan.renewedAt": new Date(),
             "plan.expiresAt": exp,
             "plan.used": newOrder,
+            "plan.planType": "Subscription Plan",
           },
         });
       }

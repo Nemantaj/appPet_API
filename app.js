@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const path = require("path");
 
 const express = require("express");
@@ -37,9 +39,9 @@ app.use((error, req, res, next) => {
   });
 });
 
- app.get("/", (req, res) => {
-     res.json({success: true})
-   });
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./build/index.html"));
+//   });
 
 mongoose
   .connect(MONGODB_URI, {
