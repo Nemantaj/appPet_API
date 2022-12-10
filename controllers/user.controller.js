@@ -123,8 +123,8 @@ exports.createOrder = async (req, res, next) => {
         customer_phone: user.mobile.toString(),
       },
       order_meta: {
-        return_url: "https://" + req.headers.host +  "/order?order_id={order_id}",
-        notify_url: "https://"+ req.headers.host +"/order",
+        return_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/order?order_id={order_id}",
+        notify_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/order",
       },
       petInfo: req.body.petId,
       plan: {
@@ -307,8 +307,8 @@ exports.renewPlan = async (req, res, next) => {
         customer_phone: plan.userId.mobile.toString(),
       },
      order_meta: {
-        return_url: "https://" + req.headers.host +  "/renew?order_id={order_id}",
-        notify_url: "https://"+ req.headers.host +"/renew",
+        return_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/renew?order_id={order_id}",
+        notify_url: "https://app-pet-client-1-auhkpxegh-nemantaj.vercel.app/renew",
       },
       petInfo: planId,
       plan: {
