@@ -10,6 +10,7 @@ const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodeMailer = require("nodemailer");
 const crypto = require("crypto");
+const fetch = require('node-fetch');
 
 const apiKey = "278827ad240a6189b8e496bcdd728872";
 const Secret = "87511d1ab284f52cfe0b544556e46cbff21cde4c";
